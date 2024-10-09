@@ -1,11 +1,12 @@
 import express from "express";
 import { check, validationResult } from 'express-validator';
+import { authenticateJWT  } from "../middleware/authMiddleware.js";
 import heroService from "../services/heroServices.js";
 import Hero from "../models/heroModel.js";
 
 const router = express.Router();
 
-router.get("/heroes", async (req, res) => {
+router.get("/heroes", authenticateJWT, async (req, res) => {
     try {
         const heroes = await heroService.getAllHeroes();
         res.json(heroes);
@@ -22,7 +23,7 @@ router.post("/heroes",
     async (req, res) => {
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            return res.status(400).json({ error : errors.args()})
+            return res.status(400).json({ error : errors.array()})
         }
 
         try {
