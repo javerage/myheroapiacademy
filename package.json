@@ -1,5 +1,5 @@
 {
-  "name": "myheroapiacademy",
+  "name": "myheroutmacademy",
   "version": "1.0.0",
   "main": "app.js",
   "type": "module",
@@ -11,6 +11,7 @@
   "license": "MIT",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.0",
     "express-validator": "^7.2.0",
     "fs-extra": "^11.2.0"
